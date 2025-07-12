@@ -1,0 +1,76 @@
+<div>
+    <div id="header" class="sticky top-0 z-50 transition-transform duration-500 transform h-[15vh] bg-black text-white flex items-center justify-between">
+  
+        <!-- Left spacer (can hold something later or stay empty) -->
+        <div class="flex-1 flex items-center justify-start">
+            <!-- Optional content -->
+        </div>
+  
+        <!-- Centered logo -->
+        <div class="flex-1 flex items-center justify-center h-full">
+            <a href="/">
+                <img src="../../assets/fl_ang2.png" alt="Logo" class="max-h-40 mt-[50%]" />
+            </a>
+        </div>
+  
+        <!-- Right menu icon -->
+        <div class="flex-1 flex items-center justify-end">
+            <!-- <button class="w-12 h-12 flex items-center justify-center mr-[15%]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            -->
+        </div>
+    </div>
+    <div class="mx-auto mt-12 h-[50vh] w-auto max-w-[90vw] border-4 border-gray-300 bg-gray-200 flex items-center justify-center text-black text-3xl">
+        Portrait Placeholder
+    </div>
+    <div class="mt-12 font-sfmono_l text-lg text-center px-8 tracking-tighter">
+        As a recruiter for the Florida Army National Guard, I bring over 15 years of active duty experience and a deep commitment to helping others find purpose through service. Throughout my military career, I’ve seen firsthand the powerful impact the Guard can have on someone's life — from building discipline and confidence to opening doors through education and career training. Now, I'm proud to help others in Florida discover the same opportunities that shaped my journey. Every conversation is a chance to connect someone with a path of growth, service, and lasting impact — and that's what drives me every day.
+    </div>
+    <div class="text-3xl font-lemon text-[#f5d745] text-center pt-16 px-4">
+        SSG Benjamin Mendoza
+    </div>
+    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4">
+        National Guard Recruiter, Fort Myers
+    </div>
+    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-8">
+        email&#64;email.com
+    </div>   
+    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-4">
+        123-345-5678
+    </div>
+    <div class="text-5xl font-lemon text-black text-center pt-24">
+        Get in Touch
+    </div>
+    <form class="max-w-md mx-auto mt-8 px-12 flex flex-col gap-8 text-left text-black" #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
+        <div>
+          <h3 class="text-base font-sfmono_m font-bold mb-2">Name</h3>
+          <input name="name" [(ngModel)]="formData.name" type="text" required class="border border-gray-400 px-4 py-2 rounded w-full" />
+        </div>
+      
+        <div>
+          <h3 class="text-base font-sfmono_m font-bold mb-2">Phone Number</h3>
+          <input name="phone" [(ngModel)]="formData.phone" type="tel" required class="border border-gray-400 px-4 py-2 rounded w-full" />
+        </div>
+
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Zip Code</h3>
+            <input name="zip" [(ngModel)]="formData.zip" type="text" required inputmode="numeric" pattern="[0-9]*" class="border border-gray-400 px-4 py-2 rounded w-full" />
+          </div>
+      
+        <div>
+          <h3 class="text-base font-sfmono_m font-bold mb-2">Message</h3>
+          <textarea name="message" [(ngModel)]="formData.message" required rows="4" class="border border-gray-400 px-4 py-2 rounded resize-none w-full"></textarea>
+        </div>
+      
+        <div class="mb-12 flex justify-center text-center items-center">
+            <button type="submit" class="bg-black font-lemon text-[#f5d745] text-xl py-4 px-8 rounded hover:bg-gray-800 self-center">
+                Submit
+            </button>
+        </div>
+      </form>
+</div>

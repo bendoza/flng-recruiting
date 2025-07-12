@@ -1,0 +1,56 @@
+h1, main {
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+@font-face {
+    font-family: 'SFMono-Regular';
+    src: url('/assets/fonts/SFMono-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+@font-face {
+    font-family: 'SFMono-Medium';
+    src: url('/assets/fonts/SFMono-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+@font-face {
+    font-family: 'SFMono-Light';
+    src: url('/assets/fonts/SFMono-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+@font-face {
+    font-family: 'Cocogoose';
+    src: url('/assets/fonts/Cocogoose.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+@font-face {
+    font-family: 'built';
+    src: url('/assets/fonts/built.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lemon';
+    src: url('/assets/fonts/lemon.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+
+@font-face {
+    font-family: 'geo';
+    src: url('/assets/fonts/geo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}  
