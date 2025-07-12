@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-recruiting',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './recruiting.component.html',
   styleUrl: './recruiting.component.css'
 })
 export class RecruitingComponent {
+  constructor(private http: HttpClient) {}
 
-  url = 'https://eo3evkqk9dq52le.m.pipedream.net';
+  url = 'http://localhost:443/SendEmail';
 
   formData = {
     name: '',
@@ -46,9 +48,25 @@ export class RecruitingComponent {
       return;
     }
   
-    const { name, phone, zip, message } = this.formData;
-    alert(
-      `Submitted Info:\nName: ${name}\nPhone: ${phone}\nZip: ${zip}\nMessage: ${message}`
-    );
+    const payload = {
+			name: this.formData.name,
+			phone: this.formData.phone,
+      zip: this.formData.zip,
+			message: this.formData.message
+		};
+
+		this.http.post<{ success: boolean }>(this.url, payload).subscribe({
+			next: (res) => {
+				if (res.success) {
+					alert('Message sent successfully!');
+				} else {
+					alert('There was a problem sending your message.');
+				}
+			},
+			error: (err) => {
+				console.error(err);
+				alert('Something went wrong. Please try again later.');
+			}
+		});
   }   
 }
