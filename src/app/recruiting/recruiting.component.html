@@ -1,76 +1,251 @@
 <div>
-    <div id="header" class="sticky top-0 z-50 transition-transform duration-500 transform h-[15vh] bg-black text-white flex items-center justify-between">
-  
-        <!-- Left spacer (can hold something later or stay empty) -->
-        <div class="flex-1 flex items-center justify-start">
-            <!-- Optional content -->
-        </div>
-  
-        <!-- Centered logo -->
-        <div class="flex-1 flex items-center justify-center h-full">
-            <a href="/">
-                <img src="../../assets/fl_ang2.png" alt="Logo" class="max-h-40 mt-[50%]" />
-            </a>
-        </div>
-  
-        <!-- Right menu icon -->
-        <div class="flex-1 flex items-center justify-end">
-            <!-- <button class="w-12 h-12 flex items-center justify-center mr-[15%]">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-            -->
-        </div>
-    </div>
-    <div class="mx-auto mt-12 h-[50vh] w-auto max-w-[90vw] border-4 border-gray-300 bg-gray-200 flex items-center justify-center text-black text-3xl">
-        Portrait Placeholder
-    </div>
-    <div class="mt-12 font-sfmono_l text-lg text-center px-8 tracking-tighter">
-        As a recruiter for the Florida Army National Guard, I bring over 15 years of active duty experience and a deep commitment to helping others find purpose through service. Throughout my military career, I’ve seen firsthand the powerful impact the Guard can have on someone's life — from building discipline and confidence to opening doors through education and career training. Now, I'm proud to help others in Florida discover the same opportunities that shaped my journey. Every conversation is a chance to connect someone with a path of growth, service, and lasting impact — and that's what drives me every day.
-    </div>
-    <div class="text-3xl font-lemon text-[#f5d745] text-center pt-16 px-4">
-        SSG Benjamin Mendoza
-    </div>
-    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4">
-        National Guard Recruiter, Fort Myers
-    </div>
-    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-8">
-        benjamin.mendoza3.mil&#64;army.mil
-    </div>   
-    <div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-4">
-        352-219-8680
-    </div>
-    <div class="text-5xl font-lemon text-black text-center pt-24">
-        Get in Touch
-    </div>
-    <form class="max-w-md mx-auto mt-8 px-12 flex flex-col gap-8 text-left text-black" #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
-        <div>
-          <h3 class="text-base font-sfmono_m font-bold mb-2">Name</h3>
-          <input name="name" [(ngModel)]="formData.name" type="text" required class="border border-gray-400 px-4 py-2 rounded w-full" />
-        </div>
-      
-        <div>
-          <h3 class="text-base font-sfmono_m font-bold mb-2">Phone Number</h3>
-          <input name="phone" [(ngModel)]="formData.phone" type="tel" required class="border border-gray-400 px-4 py-2 rounded w-full" />
-        </div>
+	<div id="header" class="sticky top-0 z-50 transition-transform duration-500 transform h-[15vh] bg-black text-white flex items-center justify-between">
+		<div class="flex-1 flex items-center justify-start"></div>
+		<div class="flex-1 flex items-center justify-center h-full">
+			<a href="/">
+				<img src="../../assets/fl_ang2.png" alt="Logo" class="max-h-40 mt-[50%]" />
+			</a>
+		</div>
+		<div class="flex-1 flex items-center justify-end">
+			<button class="w-12 h-12 flex items-center justify-center mr-[15%]">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+			</button>
+		</div>
+	</div>
 
+	<div class="mx-auto mt-12 h-[50vh] w-auto max-w-[90vw] border-4 border-gray-300 bg-gray-200 flex items-center justify-center text-black text-3xl">
+		Portrait Placeholder
+	</div>
+
+	<div class="mt-12 font-sfmono_l text-lg text-center px-24 tracking-tighter">
+		As a recruiter for the Florida Army National Guard, I bring over 15 years of active duty experience and a deep commitment to helping others find purpose through service. Throughout my military career, I’ve seen firsthand the powerful impact the Guard can have on someone's life — from building discipline and confidence to opening doors through education and career training. Now, I'm proud to help others in Florida discover the same opportunities that shaped my journey. Every conversation is a chance to connect someone with a path of growth, service, and lasting impact — and that's what drives me every day.
+	</div>
+
+	<div class="text-3xl font-lemon text-[#f5d745] text-center pt-16 px-4">SSG Benjamin Mendoza</div>
+	<div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4">National Guard Recruiter, Fort Myers</div>
+	<div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-8">benjamin.mendoza3.mil&#64;army.mil</div>
+	<div class="text-base tracking-tighter font-sfmono_l text-black text-center px-4 pt-4">352-219-8680</div>
+
+	<div class="text-5xl font-lemon text-black text-center pt-24">Get in Touch</div>
+
+	<form class="max-w-md mx-auto mt-8 px-12 flex flex-col gap-8 text-left text-black" #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
+        <!-- Name -->
         <div>
-            <h3 class="text-base font-sfmono_m font-bold mb-2">Zip Code</h3>
-            <input name="zip" [(ngModel)]="formData.zip" type="text" required inputmode="numeric" pattern="[0-9]*" class="border border-gray-400 px-4 py-2 rounded w-full" />
-          </div>
-      
-        <div>
-          <h3 class="text-base font-sfmono_m font-bold mb-2">Message</h3>
-          <textarea name="message" [(ngModel)]="formData.message" required rows="4" class="border border-gray-400 px-4 py-2 rounded resize-none w-full"></textarea>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Name</h3>
+            <input name="name" [(ngModel)]="formData.name" #nameCtrl="ngModel" type="text" required
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(nameCtrl)" />
+            <div *ngIf="(nameCtrl.touched || submitted) && nameCtrl.invalid" class="mt-1 text-sm text-red-600">A valid name is required.</div>
         </div>
-      
+    
+        <!-- Address -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Street Address (Include Zip Code)</h3>
+            <input name="address" [(ngModel)]="formData.address" #addrCtrl="ngModel" type="text" required
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(addrCtrl)" />
+            <div *ngIf="(addrCtrl.touched || submitted) && addrCtrl.invalid" class="mt-1 text-sm text-red-600">A valid address is required.</div>
+        </div>
+    
+        <!-- Phone -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Phone Number</h3>
+            <input
+                name="phone"
+                [(ngModel)]="formData.phone"
+                #phoneCtrl="ngModel"
+                type="tel"
+                required
+                maxlength="12"
+                inputmode="numeric"
+                pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(phoneCtrl)"
+                (input)="formatPhone()"
+                placeholder="123-456-7890"
+            />
+            <div *ngIf="(phoneCtrl.touched || submitted) && phoneCtrl.errors?.['required']" class="mt-1 text-sm text-red-600">A valid phone number is required.</div>
+        </div>
+    
+        <!-- Referred By (optional, no message) -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Referred By</h3>
+            <input name="referred_by" [(ngModel)]="formData.referred_by" type="text"
+                class="border px-4 py-2 rounded w-full" />
+        </div>
+    
+        <!-- DOB -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Date of Birth</h3>
+            <div class="grid grid-cols-3 gap-3">
+                <select name="dobMonth" [(ngModel)]="formData.dobMonth" #dobMo="ngModel" required
+                    class="border px-3 py-2 rounded w-full"
+                    [ngClass]="invalidClass(dobMo)">
+                    <option value="" disabled selected>MM</option>
+                    <option *ngFor="let m of months" [value]="m.value">{{ m.label }}</option>
+                </select>
+    
+                <select name="dobDay" [(ngModel)]="formData.dobDay" #dobDa="ngModel" required
+                    class="border px-3 py-2 rounded w-full"
+                    [ngClass]="invalidClass(dobDa)">
+                    <option value="" disabled selected>DD</option>
+                    <option *ngFor="let d of days" [value]="d">{{ d }}</option>
+                </select>
+    
+                <select name="dobYear" [(ngModel)]="formData.dobYear" #dobYr="ngModel" required
+                    class="border px-3 py-2 rounded w-full"
+                    [ngClass]="invalidClass(dobYr)">
+                    <option value="" disabled selected>YYYY</option>
+                    <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+                </select>
+            </div>
+            <div *ngIf="(dobMo.touched || dobDa.touched || dobYr.touched || submitted) && (dobMo.invalid || dobDa.invalid || dobYr.invalid)" class="mt-1 text-sm text-red-600">
+                A valid date of birth is required.
+            </div>
+        </div>
+    
+        <!-- Height -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Height</h3>
+            <div class="grid grid-cols-2">
+                <div class="flex items-center gap-2">
+                    <input name="heightFeet" [(ngModel)]="formData.heightFeet" #hf="ngModel"
+                        type="number" min="0" max="8" required
+                        class="border px-4 py-2 rounded w-1/2"
+                        [ngClass]="invalidClass(hf)" />
+                    <span class="text-gray-600">ft</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input name="heightInches" [(ngModel)]="formData.heightInches" #hi="ngModel"
+                        type="number" min="0" max="11" required
+                        class="border px-4 py-2 rounded w-1/2"
+                        [ngClass]="invalidClass(hi)" />
+                    <span class="text-gray-600">in</span>
+                </div>
+            </div>
+            <div *ngIf="((hf.touched || hi.touched || submitted) && (hf.invalid || hi.invalid))" class="mt-1 text-sm text-red-600">
+                Height (feet and inches) is required.
+            </div>
+        </div>
+    
+        <!-- Weight -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Weight</h3>
+            <div class="flex items-center gap-2">
+                <input name="weightLbs" [(ngModel)]="formData.weightLbs" #wlbs="ngModel"
+                    type="number" min="0" required
+                    class="border px-4 py-2 rounded w-1/3"
+                    [ngClass]="invalidClass(wlbs)" />
+                <span class="text-gray-600">lbs</span>
+            </div>
+            <div *ngIf="(wlbs.touched || submitted) && wlbs.invalid" class="mt-1 text-sm text-red-600">Weight is required.</div>
+        </div>
+    
+        <!-- Prior Service -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Prior Service</h3>
+            <select name="prior_service" [(ngModel)]="formData.prior_service" #ps="ngModel" required
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(ps)">
+                <option value="" disabled selected>Select one</option>
+                <option>Never Served</option>
+                <option>Prior Service</option>
+                <option>Prior Service and I have a current VA disability rating</option>
+                <option>Prior Service but I was discharged before my contract was over</option>
+                <option>Currently Serving</option>
+            </select>
+            <div *ngIf="(ps.touched || submitted) && ps.invalid" class="mt-1 text-sm text-red-600">An answer for prior service is required.</div>
+        </div>
+    
+        <!-- Law Trouble -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Have you been in trouble with the law?</h3>
+            <div class="flex items-center gap-6"
+                [class.invalid-group]="((lt.touched && lt.invalid) || (submitted && lt.invalid))">
+                <label class="inline-flex items-center gap-2">
+                    <input type="radio" name="law_trouble" [(ngModel)]="formData.law_trouble" #lt="ngModel" [value]="'yes'" required />
+                    <span>Yes</span>
+                </label>
+                <label class="inline-flex items-center gap-2">
+                    <input type="radio" name="law_trouble" [(ngModel)]="formData.law_trouble" [value]="'no'" required />
+                    <span>No</span>
+                </label>
+            </div>
+            <div *ngIf="(lt.touched || submitted) && lt.invalid" class="mt-1 text-sm text-red-600">Please choose Yes or No.</div>
+        </div>
+    
+        <!-- Law Trouble Explanation -->
+        <div *ngIf="formData.law_trouble === 'yes'">
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Explain</h3>
+            <textarea name="law_trouble_exp" [(ngModel)]="formData.law_trouble_exp" #lte="ngModel"
+                rows="5" [required]="formData.law_trouble === 'yes'"
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(lte)"></textarea>
+            <div *ngIf="(lte.touched || submitted) && lte.invalid" class="mt-1 text-sm text-red-600">An explanation is required.</div>
+        </div>
+    
+        <!-- Education -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Highest Level of Education</h3>
+            <select name="education" [(ngModel)]="formData.education" #edu="ngModel" required
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(edu)">
+                <option value="" disabled selected>Select one</option>
+                <option>Current HS Junior</option>
+                <option>Current HS Senior</option>
+                <option>HS Graduate/Diploma</option>
+                <option>GED/Adult GED Diploma</option>
+                <option>Associates Degree</option>
+                <option>Bachelors Degree or Higher</option>
+                <option>None Apply</option>
+            </select>
+            <div *ngIf="(edu.touched || submitted) && edu.invalid" class="mt-1 text-sm text-red-600">An answer for education is required.</div>
+        </div>
+    
+        <!-- Marital Status -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Marital Status</h3>
+            <select name="marital" [(ngModel)]="formData.marital" #mar="ngModel" required
+                class="border px-4 py-2 rounded w-full"
+                [ngClass]="invalidClass(mar)">
+                <option value="" disabled selected>Select one</option>
+                <option>Single and never married</option>
+                <option>Married</option>
+                <option>Divorced</option>
+                <option>Widowed</option>
+            </select>
+            <div *ngIf="(mar.touched || submitted) && mar.invalid" class="mt-1 text-sm text-red-600">Marital Status is required.</div>
+        </div>
+    
+        <!-- Dependents (required) -->
+        <div>
+            <h3 class="text-base font-sfmono_m font-bold mb-2">Number of Dependents</h3>
+            <input
+                name="dependents"
+                [(ngModel)]="formData.dependents"
+                #dep="ngModel"
+                type="number"
+                min="0"
+                step="1"
+                required
+                class="border px-4 py-2 rounded w-1/3"
+                [ngClass]="invalidClass(dep)"
+            />
+            <div *ngIf="(dep.touched || submitted) && dep.errors?.['required']" class="mt-1 text-sm text-red-600">
+                Dependents is required.
+            </div>
+            <div *ngIf="(dep.touched || submitted) && dep.errors?.['min']" class="mt-1 text-sm text-red-600">
+                Must be 0 or greater.
+            </div>
+        </div>
+    
+        <!-- Submit -->
         <div class="mb-12 flex justify-center text-center items-center">
             <button type="submit" class="bg-black font-lemon text-[#f5d745] text-xl py-4 px-8 rounded hover:bg-gray-800 self-center">
                 Submit
             </button>
         </div>
-      </form>
+    </form>       
 </div>

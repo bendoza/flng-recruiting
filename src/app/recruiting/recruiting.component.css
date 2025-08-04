@@ -53,4 +53,27 @@ h1, main {
     src: url('/assets/fonts/geo.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-}  
+}
+
+/* Turn red only after user interacted (blurred) and it's invalid */
+input.ng-touched.ng-invalid[required],
+select.ng-touched.ng-invalid[required],
+textarea.ng-touched.ng-invalid[required]{
+	border-color:#ef4444; /* red-500 */
+	box-shadow:0 0 0 1px rgba(239,68,68,.5);
+}
+
+/* Also show red after a submit attempt */
+form.ng-submitted input.ng-invalid[required],
+form.ng-submitted select.ng-invalid[required],
+form.ng-submitted textarea.ng-invalid[required]{
+	border-color:#ef4444;
+	box-shadow:0 0 0 1px rgba(239,68,68,.5);
+}
+
+/* Optional: radio group outline */
+.invalid-group{
+	border:1px solid #ef4444;
+	border-radius:.25rem;
+	padding:.25rem .5rem;
+}
