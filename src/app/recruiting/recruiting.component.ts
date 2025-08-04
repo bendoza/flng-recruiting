@@ -33,19 +33,15 @@ export class RecruitingComponent implements OnInit {
 		phone: '',
 		referred_by: '',
 		address: '',
-		// height/weight split
 		heightFeet: '',
 		heightInches: '',
 		weightLbs: '',
-		// DOB split
 		dobMonth: '',
 		dobDay: '',
 		dobYear: '',
-		// computed fields (set on submit)
 		DOB: '',
 		height: '',
 		weight: '',
-		// other fields
 		law_trouble: '',
 		law_trouble_exp: '',
 		education: '',
@@ -90,6 +86,23 @@ export class RecruitingComponent implements OnInit {
 			const d = parseInt(this.formData.dobDay, 10);
 			if (d > count) this.formData.dobDay = String(count);
 		}
+	}
+
+	// Blocks e/E/+/-/. while allowing navigation & common shortcuts
+	blockNonNumeric(event: KeyboardEvent): void {
+		const allowed = new Set(['Backspace','Delete','Tab','Escape','Enter','ArrowLeft','ArrowRight','Home','End']);
+		if (allowed.has(event.key)) return;
+
+		// Allow Ctrl/Cmd+A/C/V/X
+		if ((event.ctrlKey || event.metaKey) && ['a','c','v','x'].includes(event.key.toLowerCase())) return;
+
+		const bad = ['e','E','+','-','.'];
+		if (bad.includes(event.key)) event.preventDefault();
+	}
+
+	// Strips anything that isn't a digit from the bound string field
+	enforceDigits(field: 'heightFeet'|'heightInches'|'weightLbs'|'dependents'): void {
+		this.formData[field] = (this.formData[field] ?? '').replace(/\D+/g, '');
 	}
 
 	submitForm(form: any) {

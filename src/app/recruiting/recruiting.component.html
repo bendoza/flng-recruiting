@@ -111,17 +111,37 @@
             <h3 class="text-base font-sfmono_m font-bold mb-2">Height</h3>
             <div class="grid grid-cols-2">
                 <div class="flex items-center gap-2">
-                    <input name="heightFeet" [(ngModel)]="formData.heightFeet" #hf="ngModel"
-                        type="number" min="0" max="8" required
+                    <input
+                        name="heightFeet"
+                        [(ngModel)]="formData.heightFeet"
+                        #hf="ngModel"
+                        type="number"
+                        min="0"
+                        max="8"
+                        step="1"
+                        required
+                        inputmode="numeric"
+                        (keydown)="blockNonNumeric($event)"
                         class="border px-4 py-2 rounded w-1/2"
-                        [ngClass]="invalidClass(hf)" />
+                        [ngClass]="invalidClass(hf)"
+                    />
                     <span class="text-gray-600">ft</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <input name="heightInches" [(ngModel)]="formData.heightInches" #hi="ngModel"
-                        type="number" min="0" max="11" required
+                    <input
+                        name="heightInches"
+                        [(ngModel)]="formData.heightInches"
+                        #hi="ngModel"
+                        type="number"
+                        min="0"
+                        max="11"
+                        step="1"
+                        required
+                        inputmode="numeric"
+                        (keydown)="blockNonNumeric($event)"
                         class="border px-4 py-2 rounded w-1/2"
-                        [ngClass]="invalidClass(hi)" />
+                        [ngClass]="invalidClass(hi)"
+                    />
                     <span class="text-gray-600">in</span>
                 </div>
             </div>
@@ -134,10 +154,19 @@
         <div>
             <h3 class="text-base font-sfmono_m font-bold mb-2">Weight</h3>
             <div class="flex items-center gap-2">
-                <input name="weightLbs" [(ngModel)]="formData.weightLbs" #wlbs="ngModel"
-                    type="number" min="0" required
+                <input
+                    name="weightLbs"
+                    [(ngModel)]="formData.weightLbs"
+                    #wlbs="ngModel"
+                    type="number"
+                    min="0"
+                    step="1"
+                    required
+                    inputmode="numeric"
+                    (keydown)="blockNonNumeric($event)"
                     class="border px-4 py-2 rounded w-1/3"
-                    [ngClass]="invalidClass(wlbs)" />
+                    [ngClass]="invalidClass(wlbs)"
+                />
                 <span class="text-gray-600">lbs</span>
             </div>
             <div *ngIf="(wlbs.touched || submitted) && wlbs.invalid" class="mt-1 text-sm text-red-600">Weight is required.</div>
@@ -219,7 +248,7 @@
             <div *ngIf="(mar.touched || submitted) && mar.invalid" class="mt-1 text-sm text-red-600">Marital Status is required.</div>
         </div>
     
-        <!-- Dependents (required) -->
+        <!-- Dependents -->
         <div>
             <h3 class="text-base font-sfmono_m font-bold mb-2">Number of Dependents</h3>
             <input
@@ -230,6 +259,8 @@
                 min="0"
                 step="1"
                 required
+                inputmode="numeric"
+                (keydown)="blockNonNumeric($event)"
                 class="border px-4 py-2 rounded w-1/3"
                 [ngClass]="invalidClass(dep)"
             />
