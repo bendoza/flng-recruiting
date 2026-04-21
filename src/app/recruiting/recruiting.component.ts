@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 	templateUrl: './recruiting.component.html',
 	styleUrl: './recruiting.component.css'
 })
-export class RecruitingComponent implements OnInit {
+export class RecruitingComponent {
 	constructor(private http: HttpClient) {}
 
 	url = 'http://localhost:443/SendEmail';
@@ -18,44 +18,18 @@ export class RecruitingComponent implements OnInit {
 	// UI state
 	submitted = false;
 
-	// DOB selects
-	months = [
-		{ value: '01', label: '01' }, { value: '02', label: '02' }, { value: '03', label: '03' },
-		{ value: '04', label: '04' }, { value: '05', label: '05' }, { value: '06', label: '06' },
-		{ value: '07', label: '07' }, { value: '08', label: '08' }, { value: '09', label: '09' },
-		{ value: '10', label: '10' }, { value: '11', label: '11' }, { value: '12', label: '12' }
-	];
-	days: number[] = [];
-	years: number[] = [];
-
 	formData = {
 		name: '',
 		phone: '',
-		referred_by: '',
-		address: '',
+		age: '',
 		heightFeet: '',
 		heightInches: '',
 		weightLbs: '',
-		dobMonth: '',
-		dobDay: '',
-		dobYear: '',
-		DOB: '',
 		height: '',
 		weight: '',
-		law_trouble: '',
-		law_trouble_exp: '',
 		education: '',
-		marital: '',
-		dependents: '',
-		prior_service: '',
-		message: ''
+		bring_a_buddy: '',
 	};
-
-	ngOnInit(): void {
-		const currentYear = new Date().getFullYear();
-		for (let y = currentYear; y >= 1950; y--) this.years.push(y);
-		this.updateDays();
-	}
 
 	// Red border helper
 	// in RecruitingComponent
@@ -75,19 +49,6 @@ export class RecruitingComponent implements OnInit {
 			c ? `${a}-${b}-${c}` : b ? `${a}-${b}` : a;
 	}
 
-	// Days depend on month/year
-	updateDays() {
-		const m = parseInt(this.formData.dobMonth || '1', 10);
-		const y = parseInt(this.formData.dobYear || '2000', 10);
-		const count = new Date(y, m, 0).getDate(); // last day of month
-		this.days = Array.from({ length: count }, (_, i) => i + 1);
-		// clamp selected day if needed
-		if (this.formData.dobDay) {
-			const d = parseInt(this.formData.dobDay, 10);
-			if (d > count) this.formData.dobDay = String(count);
-		}
-	}
-
 	// Blocks e/E/+/-/. while allowing navigation & common shortcuts
 	blockNonNumeric(event: KeyboardEvent): void {
 		const allowed = new Set(['Backspace','Delete','Tab','Escape','Enter','ArrowLeft','ArrowRight','Home','End']);
@@ -101,31 +62,22 @@ export class RecruitingComponent implements OnInit {
 	}
 
 	// Strips anything that isn't a digit from the bound string field
-	enforceDigits(field: 'heightFeet'|'heightInches'|'weightLbs'|'dependents'): void {
+	enforceDigits(field: 'heightFeet'|'heightInches'|'weightLbs'): void {
 		this.formData[field] = (this.formData[field] ?? '').replace(/\D+/g, '');
 	}
 
 	submitForm(form: any) {
 		this.submitted = true;
-		this.updateDays();
 
 		const errors: string[] = [];
 
 		// Required basics
 		if (!this.formData.name.trim()) errors.push('Name is required.');
-		if (!this.formData.address.trim()) errors.push('Address is required.');
 
 		// Phone required + length
 		const phone10 = (this.formData.phone || '').replace(/\D/g, '');
 		if (!phone10) errors.push('Phone number is required.');
 		else if (phone10.length !== 10) errors.push('Phone number must be 10 digits.');
-
-		// DOB required (from selects)
-		if (!this.formData.dobMonth || !this.formData.dobDay || !this.formData.dobYear) {
-			errors.push('Date of Birth is required.');
-		} else {
-			this.formData.DOB = `${this.formData.dobYear}-${this.formData.dobMonth}-${String(this.formData.dobDay).padStart(2, '0')}`;
-		}
 
 		// Height required
 		const feet = Number(this.formData.heightFeet);
@@ -147,16 +99,9 @@ export class RecruitingComponent implements OnInit {
 		}
 
 		// Selects required
-		if (!this.formData.prior_service) errors.push('Prior Service selection is required.');
 		if (!this.formData.education) errors.push('Highest Level of Education is required.');
-		if (!this.formData.marital) errors.push('Marital Status is required.');
 
-		// Law trouble conditional
-		if (!this.formData.law_trouble) {
-			errors.push('Please answer whether you have been in trouble with the law.');
-		} else if (this.formData.law_trouble === 'yes' && !this.formData.law_trouble_exp.trim()) {
-			errors.push('Please explain the law trouble.');
-		}
+		if (!this.formData.bring_a_buddy) errors.push('Please answer the Bring a Buddy question.');
 
 		if (errors.length > 0) {
 			alert('Please fix the following:\n\n' + errors.join('\n'));
@@ -166,17 +111,11 @@ export class RecruitingComponent implements OnInit {
 		const payload = {
 			name: this.formData.name,
 			phone: this.formData.phone,
-			referred_by: this.formData.referred_by,
-			DOB: this.formData.DOB,
+			age: String(this.formData.age),
 			height: this.formData.height,
 			weight: this.formData.weight,
-			law_trouble: this.formData.law_trouble,
-			law_trouble_exp: this.formData.law_trouble_exp,
-			prior_service: this.formData.prior_service,
-			address: this.formData.address,
 			education: this.formData.education,
-			marital: this.formData.marital,
-			dependents: this.formData.dependents
+			BAB: this.formData.bring_a_buddy,
 		};
     
 		this.http.post<{ success: boolean }>(this.url, payload).subscribe({
