@@ -13,7 +13,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export class RecruitingComponent {
 	constructor(private http: HttpClient) {}
 
-	url = 'http://localhost:443/SendEmail';
+	url = 'https://arctic-sound-388921.ue.r.appspot.com/SendEmail';
 
 	// UI state
 	submitted = false;
